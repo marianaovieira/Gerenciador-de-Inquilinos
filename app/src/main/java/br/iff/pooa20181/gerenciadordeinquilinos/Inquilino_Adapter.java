@@ -1,6 +1,8 @@
 package br.iff.pooa20181.gerenciadordeinquilinos;
 
 import android.content.Context;
+import android.os.Build;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,14 +33,14 @@ public class Inquilino_Adapter  extends RecyclerView.Adapter{
         return inquilinoViewHolder;
     }
 
-
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder,
                                  int position) {
 
         InquilinoViewHolder holder = (InquilinoViewHolder) viewHolder;
 
-        BD_Inquilinos inq  = inquilino.get(position) ;
+        BD_Inquilinos inq  = this.inquilino.get(position) ;
 
         holder.nome_locador.setText(inq.getNome_locador());
         holder.sobrenome_locador.setText(inq.getSobrenome_locador());
@@ -72,9 +74,9 @@ public class Inquilino_Adapter  extends RecyclerView.Adapter{
 
         public InquilinoViewHolder(View itemView) {
             super(itemView);
-            nome_locador = (TextView) itemView.findViewById(R.id.txtNome_locador);
-            sobrenome_locador = (TextView) itemView.findViewById(R.id.txtSobrenome_locador);
-            email_locador = (TextView) itemView.findViewById(R.id.txtEmail_locador);
+            nome_locador = (TextView) itemView.findViewById(R.id.tvNomeLocador);
+            sobrenome_locador = (TextView) itemView.findViewById(R.id.tvSobrenomeLocador);
+            email_locador = (TextView) itemView.findViewById(R.id.tvEmailLocador);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
