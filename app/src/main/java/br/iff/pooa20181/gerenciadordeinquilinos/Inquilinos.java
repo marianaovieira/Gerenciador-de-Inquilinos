@@ -1,5 +1,6 @@
 package br.iff.pooa20181.gerenciadordeinquilinos;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class Inquilinos extends AppCompatActivity implements ClickRecyclerViewLi
         setContentView(R.layout.activity_inquilinos);
 
 
+        realm = Realm.getDefaultInstance();
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -37,7 +39,11 @@ public class Inquilinos extends AppCompatActivity implements ClickRecyclerViewLi
         });
 
 
+
+
     }
+
+
 
     private List<BD_Inquilinos> getInquilinos(){
 
@@ -70,6 +76,7 @@ public class Inquilinos extends AppCompatActivity implements ClickRecyclerViewLi
 
     @Override
     public void finish(){
+        super.finish();
         realm.close();
 
     }
