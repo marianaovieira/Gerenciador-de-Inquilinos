@@ -39,15 +39,41 @@ public class Inquilinos extends AppCompatActivity implements ClickRecyclerViewLi
             }
         });
 
-        private List<Inquilino> getLivros(){
 
-            return (List)realm.where(Livro.class).findAll();
+    }
 
-        }
+    private List<BD_Inquilinos> getInquilinos(){
+
+        return (List)realm.where(BD_Inquilinos.class).findAll();
+
+    }
+
+    @Override
+    public void onClick(Object object) {
+        BD_Inquilinos inquilino = (BD_Inquilinos) object;
+        Intent intent = new Intent(Inquilinos.this,Cadastro_Inquilino.class);
+        intent.putExtra("id",inquilino.getId());
+        startActivity(intent);
+
+    }
+
+    protected void onResume(){
+        super.onResume();
+        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.rv_Inquilinos);
+
+        recyclerView.setAdapter(new Inquilino_Adapter(getInquilinos(),this,this));
+        RecyclerView.LayoutManager layout = new LinearLayoutManager(this,
+                LinearLayoutManager.VERTICAL, false);
+
+        recyclerView.setLayoutManager(layout);
 
 
+    }
 
 
+    @Override
+    public void finish(){
+        realm.close();
 
     }
 }

@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".Main" />
         <activity android:name=".Inquilinos" />
-        <activity android:name=".Cadastro_Inquilino"></activity>
+        <activity android:name=".Cadastro_Inquilino" />
+        <activity android:name=".content_Inquilino"></activity>
     </application>
 
 </manifest>
